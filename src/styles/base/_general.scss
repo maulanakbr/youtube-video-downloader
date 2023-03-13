@@ -1,0 +1,9 @@
+@use "../abstracts" as *;
+
+body {
+  font-family: $ff-roboto;
+  font-weight: fw(regular);
+  font-size: fs(s);
+  color: clr(neutral-black, 300);
+  background-color: clr(primary, 300);
+}

@@ -1,0 +1,25 @@
+@use "../abstracts/" as *;
+
+.footer-content {
+  @include flex-content(100%, 3.5rem, column);
+  margin-top: 1.5rem;
+  font-size: 0.67rem;
+  text-align: center;
+  gap: 0.4rem;
+
+  .footer-credits {
+    span {
+      display: block;
+      font-weight: fw(medium);
+      color: clr(primary, 300);
+    }
+  }
+
+  .footer-media {
+    display: flex;
+    gap: 0.7rem;
+    & a {
+      color: clr(neutral-black, 300);
+    }
+  }
+}

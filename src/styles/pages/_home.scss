@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+
+.home {
+  @include flex-container(_, 100vh);
+
+  .home-content {
+    @include flex-content(18rem, 32rem, column);
+    @include rounded-box;
+    padding: 0 1rem;
+    background-color: clr(neutral-white, 200);
+
+    h1 {
+      @include text-heading;
+    }
+  }
+}

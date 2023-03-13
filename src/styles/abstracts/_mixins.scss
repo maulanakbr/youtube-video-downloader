@@ -1,0 +1,52 @@
+@use "colors" as *;
+@use "functions" as *;
+
+@mixin flex-container($width: 100vw, $height: 100vh) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $width;
+  height: $height;
+}
+
+@mixin flex-content(
+  $width,
+  $height,
+  $direction: null,
+  $content: center,
+  $align: center
+) {
+  display: flex;
+  width: $width;
+  height: $height;
+  justify-content: $content;
+  align-items: $align;
+  overflow: hidden;
+  flex-direction: $direction;
+}
+
+@mixin rounded-box($size: 0.13rem, $border: false, $shadow: false) {
+  @if $border {
+    border: $size solid clr(primary, 300);
+  } @else if $shadow {
+    box-shadow: 0px 3px 8px 0.5px clr(neutral-black, 300);
+  }
+
+  border-radius: 3px;
+}
+
+@mixin text-heading($align: center) {
+  font-size: fs(l);
+  font-weight: fw(medium);
+  text-align: $align;
+  color: clr(neutral-black, 200);
+  letter-spacing: 0.5px;
+}
+
+@mixin loading-skeleton {
+  // position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  margin-bottom: 1rem;
+}

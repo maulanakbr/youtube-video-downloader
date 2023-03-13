@@ -1,0 +1,46 @@
+@use "../abstracts/" as *;
+
+.loading-content {
+  @include flex-content(100%, 30rem, column, start);
+  gap: 1rem;
+
+  .loading-image {
+    position: relative;
+    width: 100%;
+    height: 10rem;
+
+    :nth-child(1) {
+      @include loading-skeleton;
+    }
+  }
+
+  .loading-tagline {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    :nth-child(1) {
+      @include loading-skeleton;
+    }
+
+    :nth-child(2) {
+      @include loading-skeleton;
+      width: 80%;
+    }
+
+    :nth-child(3) {
+      @include loading-skeleton;
+      width: 50%;
+    }
+
+    :nth-child(4) {
+      @include loading-skeleton;
+      width: 30%;
+      margin-bottom: 3rem;
+    }
+
+    :nth-child(5) {
+      @include loading-skeleton;
+    }
+  }
+}

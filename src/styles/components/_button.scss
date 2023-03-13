@@ -1,0 +1,22 @@
+@use "../abstracts/" as *;
+
+.button-search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: clr(primary, 200);
+
+  & :first-child {
+    font-size: fs(m);
+    color: clr(neutral-white, 300);
+  }
+
+  &:hover {
+    background-color: clr(primary, 300);
+  }
+}

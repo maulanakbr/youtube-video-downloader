@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+$ff-roboto: "Roboto", sans-serif;
+
+$font-sizes: (
+  4xl: 1.802rem,
+  2xl: 1.602rem,
+  xl: 1.424rem,
+  l: 1.266rem,
+  m: 1.125rem,
+  s: 1rem,
+  xs: 0.889rem,
+);
+
+$font-weights: (
+  black: 900,
+  bold: 700,
+  medium: 500,
+  regular: 400,
+  light: 300,
+  thin: 100,
+);
