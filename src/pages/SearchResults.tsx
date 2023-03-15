@@ -30,13 +30,12 @@ const SearchResults = () => {
 
       try {
         const { data } = await axios.request(options);
-        console.log(data);
 
-        if (data.length !== 0) {
+        if (data.length !== 0 && data.status === "OK") {
           setResults(data);
         }
 
-        if (results && results.status === "OK") return setIsLoading(!isLoading);
+        setIsLoading(!isLoading);
       } catch (error) {
         console.log(error);
       }
