@@ -11,6 +11,7 @@ import Logo from "../assets/logo.svg";
 const SearchResults = () => {
   const [results, setResults] = useState<ResultsObject | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
   const { query } = useParams();
 
   useEffect(() => {
@@ -31,13 +32,13 @@ const SearchResults = () => {
       try {
         const { data } = await axios.request(options);
 
-        if (data.length !== 0 && data.status === "OK") {
+        if (data && data.status === "OK") {
           setResults(data);
         }
 
         setIsLoading(!isLoading);
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        if (error && error.message.includes("429")) setIsError(!isError);
       }
     };
 
@@ -52,8 +53,12 @@ const SearchResults = () => {
         <title>Results | Simple Youtube Video Downloader</title>
       </Helmet>
       <div className="results-content">
-        {isLoading ? (
+        {isLoading && results?.status?.includes("429") === false ? (
           <CardLoadingSkeleton />
+        ) : isError ? (
+          <>
+            <h1>404</h1>
+          </>
         ) : (
           <>
             <ItemCard item={results!} />
