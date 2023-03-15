@@ -51,7 +51,7 @@ const ItemCard = ({ item }: ResultsProps) => {
       <div className="arrow-icon" onClick={handleBacktoHome}>
         <BsArrowLeft size={31} />
       </div>
-      <img src={item?.thumbnail[1].url} />
+      <img src={item?.thumbnail[1]?.url} />
       <div className="item-tagline">
         <h1>{item?.title}</h1>
         <span>

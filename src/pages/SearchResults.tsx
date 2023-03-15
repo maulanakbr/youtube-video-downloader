@@ -5,6 +5,8 @@ import axios from "axios";
 import ItemCard from "../components/ItemCard";
 import Footer from "../components/Footer";
 import CardLoadingSkeleton from "../components/CardLoadingSkeleton";
+import { Helmet } from "react-helmet-async";
+import Logo from "../assets/logo.svg";
 
 const SearchResults = () => {
   const [results, setResults] = useState<ResultsObject | null>(null);
@@ -28,12 +30,13 @@ const SearchResults = () => {
 
       try {
         const { data } = await axios.request(options);
+        console.log(data);
 
         if (data.length !== 0) {
           setResults(data);
         }
 
-        setIsLoading(!isLoading);
+        if (results && results.status === "OK") return setIsLoading(!isLoading);
       } catch (error) {
         console.log(error);
       }
@@ -44,6 +47,11 @@ const SearchResults = () => {
 
   return (
     <section className="results">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <link rel="icon" type="image/svg+xml" href={Logo} />
+        <title>Results | Simple Youtube Video Downloader</title>
+      </Helmet>
       <div className="results-content">
         {isLoading ? (
           <CardLoadingSkeleton />
