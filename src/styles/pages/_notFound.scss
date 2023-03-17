@@ -1,0 +1,13 @@
+@use "../abstracts/" as *;
+
+.notFound {
+  @include flex-container(_, 100vh);
+
+  .notFound-content {
+    width: 20rem;
+    color: clr(neutral-white, 200);
+    font-size: fs(xl);
+    font-weight: fw(medium);
+    text-align: center;
+  }
+}

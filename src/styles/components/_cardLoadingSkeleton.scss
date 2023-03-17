@@ -21,6 +21,7 @@
 
     :nth-child(1) {
       @include loading-skeleton;
+      height: 75%;
     }
 
     :nth-child(2) {

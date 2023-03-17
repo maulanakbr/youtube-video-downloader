@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import SearchResults from "./pages/SearchResults";
-import { HelmetProvider } from "react-helmet-async";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <HelmetProvider>
-      <div className="app-wrapper">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/results/:query" element={<SearchResults />} />
-        </Routes>
-      </div>
-    </HelmetProvider>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/results/:query" element={<SearchResults />} />
+        <Route path="/request-not-found" element={<NotFound />} />
+      </Routes>
+    </Layout>
   );
 }
 

@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, NavigateFunction } from "react-router-dom";
 import { ResultsObject } from "../modules/interface";
-import axios from "axios";
-import ItemCard from "../components/ItemCard";
-import Footer from "../components/Footer";
-import CardLoadingSkeleton from "../components/CardLoadingSkeleton";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 import Logo from "../assets/logo.svg";
+import ItemCard from "../components/ItemCard";
+import CardLoadingSkeleton from "../components/CardLoadingSkeleton";
+import Footer from "../components/Footer";
 
 const SearchResults = () => {
   const [results, setResults] = useState<ResultsObject | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
   const { query } = useParams();
+  const navigate: NavigateFunction = useNavigate();
 
   useEffect(() => {
     const handleResponse = async () => {
@@ -36,9 +36,10 @@ const SearchResults = () => {
           setResults(data);
         }
 
-        setIsLoading(!isLoading);
+        return setIsLoading(!isLoading);
       } catch (error: any) {
-        if (error && error.message.includes("429")) setIsError(!isError);
+        if (error && error.message.includes("429"))
+          return navigate("/request-not-found");
       }
     };
 
@@ -53,12 +54,8 @@ const SearchResults = () => {
         <title>Results | Simple Youtube Video Downloader</title>
       </Helmet>
       <div className="results-content">
-        {isLoading && results?.status?.includes("429") === false ? (
+        {isLoading ? (
           <CardLoadingSkeleton />
-        ) : isError ? (
-          <>
-            <h1>404</h1>
-          </>
         ) : (
           <>
             <ItemCard item={results!} />
